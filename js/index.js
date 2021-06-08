@@ -1,12 +1,10 @@
 $(document).ready(function(){
     resize();
+
     $(window).on('load resize', function(){
         resize();
     });
 
-    $(window).on('load', function(){
-        resize();
-    });
 
 
     $(".category-title").on("click", function (){

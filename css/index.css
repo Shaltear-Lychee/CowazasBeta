@@ -273,6 +273,7 @@ header{
     #mid{
         flex-direction: row-reverse;
         justify-content: space-between;
+        overflow-x: hidden;
     }
     #mid-center {
         position: absolute;

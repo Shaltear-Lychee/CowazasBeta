@@ -65,12 +65,12 @@ function resize(){
             "margin-top": $num1w / 40 + "px",
             "margin-bottom": $num1w / 20 + "px"
         });
-        if($bodywidth >= 957 || $bodywidth <= 779){
+        if($bodywidth >= 950 || $bodywidth <= 779){
             $("#mid-center").css({
                 "margin-left": $num1w / 40 + "px",
                 "margin-right": $num1w / 40 + "px",
             });
-        }else if(779 < $bodywidth < 957){
+        }else if(779 < $bodywidth < 950){
             $margin0 = ($bodywidth - $num1w) / 2;
             $("#mid-center").css({
                 "margin-left": $margin0 + "px",

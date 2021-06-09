@@ -255,7 +255,7 @@ header{
     color: maroon;
     text-align: left;
 }
-@media screen and (min-width: 958px) {
+@media screen and (min-width: 950px) {
     #btn1{
         display: none;
     }
@@ -266,7 +266,7 @@ header{
         width: 20%;
     }
 }
-@media screen and (max-width: 957px){
+@media screen and (max-width: 949px){
     #searchbox{
         margin-right: 15px;
     }

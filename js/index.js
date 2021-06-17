@@ -38,7 +38,6 @@ function resize(){
         "line-height": $num0 + "px",
         "font-size": $num0 / 2 + "px"
     });
-    $("#searchbox input::placeholder").css("line-height",  + "px");
     $(".btn").css({
         "height": $num0 + "px",
         "width": $num0 + "px",

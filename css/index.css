@@ -23,27 +23,6 @@ header{
     vertical-align: middle;
     margin-right: 0px;
 }
-/*#navlist li{
-    color: darkgrey;
-    width: auto;
-    list-style: none;
-    font-family: 'Poppins', sans-serif;
-}
-#navlist li:hover{
-    color: white;
-}
-#
-#navlist{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 20%;
-    min-width: 200px;
-    height: 100%;
-    margin-right: 30px;
-}
-
- */
 #navbox{
     width: auto;
     display: flex;

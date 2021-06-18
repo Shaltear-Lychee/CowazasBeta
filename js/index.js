@@ -1,15 +1,14 @@
-$(document).ready(function(){
+$(document).ready(function () {
     resize();
 
-    $(window).on('load resize', function(){
+    $(window).on('load resize', function () {
         resize();
     });
 
 
-
-    $(".category-title").on("click", function (){
-        $(this).toggleClass("category-title-div--activated");
-        $(this).find("p").toggleClass("category-title-p--activated");
+    $(".category_title").on("click", function () {
+        $(this).toggleClass("category_title_div__activated");
+        $(this).find("p").toggleClass("category_title_p__activated");
         $(this).next().slideToggle();
     });
     /*$(".btn").on("click", function (){
@@ -17,134 +16,133 @@ $(document).ready(function(){
     });
 
      */
-    $("#btn1").on("click", function (){
-        $("#mid-center").toggleClass("mid-center--activated");
-        $("#mid-right").toggleClass("mid-right--activated");
-        $(this).toggleClass("btn--activated");
+    $("#btn1").on("click", function () {
+        $("#mid_center").toggleClass("mid_center__activated");
+        $("#mid_right").toggleClass("mid_right__activated");
+        $(this).toggleClass("btn__activated");
     });
 });
 
-function resize(){
-    $bodywidth = $("body").innerWidth();
-    $bodyheight = $("body").innerHeight();
-    $headerheight = $('header').innerHeight();//親要素の幅を取得
-    $num0 = $headerheight / 1.5;
+function resize() {
+
+    //ReferenceDisplayPropaties
+    const body = {width: $("body").innerWidth(), height: $("body").innerHeight()},
+        header = {width: undefined, height: $("header").innerHeight()},
+        header_elements = {width: undefined, height: header.height / 1.5},
+        articlezone_upper = {width: $("#articlezone_upper").innerWidth(), height_alpha: this.width * 63 / 129, height_beta: this.width * 129 / 63},
+        articlezone_lower = {width: $("#articlezone_lower").innerWidth(), height_alpha: this.width * 30 / 129, height_beta: this.width},
+        example_default_article = {width: undefined, height: $("#example_default_article").innerHeight()},
+        main_article = {width: undefined, height: $("#article_main").innerHeight()},
+        category_title = {width: undefined, height: $(".category_title").innerHeight()},
+        category_detail_title = {width: undefined, height: category_title.height * 0.75};
+
+    const ref_disp_propaties = [body, header, header_elements, articlezone_upper, articlezone_lower, example_default_article, main_article, category_title, category_detail_title];
+
+    if ($("#btn1").hasClass("btn__activated")) {
+        $("#mid_right").removeClass("mid_right__activated");
+        $("#mid_center").removeClass("mid_center__activated");
+        $("#btn1").removeClass("btn__activated");
+    }
+
     $("#searchbox").css({
-        "border-radius": $num0 / 2 + "px"
+        "border-radius": header_elements.height / 2 + "px"
     });
-    $("#category").css("height", $bodyheight - $headerheight);
+    $("#category").css("height", body.height - header.height);
     $("#searchbox input").css({
-        "height": $num0 + "px",
-        "line-height": $num0 + "px",
-        "font-size": $num0 / 2 + "px"
+        "height": header_elements.height + "px",
+        "line-height": header_elements.height + "px",
+        "font-size": header_elements.height / 2 + "px"
     });
     $(".btn").css({
-        "height": $num0 + "px",
-        "width": $num0 + "px",
-        "font-size": $num0 * 0.5 + "px"
+        "height": header_elements.height + "px",
+        "width": header_elements.height + "px",
+        "font-size": header_elements.height / 2 + "px"
     });
-    if($("#btn1").hasClass("btn--activated")){
-        $("#mid-right").removeClass("mid-right--activated");
-        $("#mid-center").removeClass("mid-center--activated");
-        $("#btn1").removeClass("btn--activated");
-    }
-    $num1w = $("#articlezone-upper").innerWidth();
-    $num1ha = $num1w * 63 / 129;
-    $num1hb = $num1w * 129 / 63;
-    $num2w = $("#articlezone-lower").innerWidth();
-    $num2ha = $num2w * 30 / 129;
-    $num2hb = $num2w;
-    if($bodywidth >= 600) {
-        $("#articlezone-upper").css({
-            "height": $num1ha + "px",
-            "gap": $num1w / 60 + "px",
+    if (body.width >= 600) {
+        $("#articlezone_upper").css({
+            "height": articlezone_upper.height_alpha + "px",
+            "gap": articlezone_upper.width / 60 + "px",
         });
-        $("#mid-center").css({
-            "height": $("#mid-center").innerWidth() * 0.9 + "px",
-            "margin-top": $num1w / 40 + "px",
-            "margin-bottom": $num1w / 20 + "px"
+        $("#mid_center").css({
+            "height": $("#mid_center").innerWidth() * 0.9 + "px",
+            "margin-top": articlezone_upper.width / 40 + "px",
+            "margin-bottom": articlezone_upper.width / 20 + "px"
         });
-        if($bodywidth >= 950 || $bodywidth <= 779){
-            $("#mid-center").css({
-                "margin-left": $num1w / 40 + "px",
-                "margin-right": $num1w / 40 + "px",
+        if (body.width >= 950 || body.width <= 779) {
+            $("#mid_center").css({
+                "margin-left": articlezone_upper.width / 40 + "px",
+                "margin-right": articlezone_upper.width / 40 + "px",
             });
-        }else if(779 < $bodywidth < 950){
-            $margin0 = ($bodywidth - $num1w) / 2;
-            $("#mid-center").css({
-                "margin-left": $margin0 + "px",
-                "margin-right": $margin0 + "px"
+        } else if (779 < body.width < 950) {
+            const margin_0 = (body.width - articlezone_upper.width) / 2;
+            $("#mid_center").css({
+                "margin-left": margin_0 + "px",
+                "margin-right": margin_0 + "px"
             });
         }
         $(".title").css({
             "width": "auto",
-            "height": $num1ha / 10 + "px",
-            "line-height": $num1ha / 10 + "px",
-            "font-size": $num1ha / 15 + "px"
+            "height": articlezone_upper.height_alpha / 10 + "px",
+            "line-height": articlezone_upper.height_alpha / 10 + "px",
+            "font-size": articlezone_upper.height_alpha  / 15 + "px"
         });
-        $("#articlezone-lower").css({
-            "height": $num2ha + "px",
-            "gap": $num1w / 60 + "px"
+        $("#articlezone_lower").css({
+            "height": articlezone_lower.height_alpha + "px",
+            "gap": articlezone_upper.width / 60 + "px"
         });
-    }else {
-        $("#mid-center").css({
-            "height": $("#mid-center").innerWidth() * 0.9 + "px",
-            "margin-left": $num1w / 20 + "px",
-            "margin-right": $num1w / 20 + "px",
-            "margin-top": $num1w / 40 + "px",
-            "margin-bottom": $num1w / 20 + "px"
+    } else {
+        $("#mid_center").css({
+            "height": $("#mid_center").innerWidth() * 0.9 + "px",
+            "margin-left": articlezone_upper.width / 20 + "px",
+            "margin-right": articlezone_upper.width / 20 + "px",
+            "margin-top": articlezone_upper.width / 40 + "px",
+            "margin-bottom": articlezone_upper.width / 20 + "px"
         });
-        $("#mid-center-lower").css("margin-top", $num1w / 40 +"px");
+        $("#mid_center_lower").css("margin-top", articlezone_upper.width / 40 + "px");
         $(".title").css({
-            "width" : $num1w * 3 / 5,
-            "height": $num1hb / 20 + "px",
-            "line-height": $num1hb / 20 + "px",
-            "max-font-size": $num1hb / 40 + "px"
+            "width": articlezone_upper.width * 3 / 5,
+            "height": articlezone_upper.height_beta / 20 + "px",
+            "line-height": articlezone_upper.height_beta / 20 + "px",
+            "max-font-size": articlezone_upper.height_beta / 40 + "px"
         });
-        $(".title").each(function (index, value){
-            let length  = value.textContent.length;
-            let charwidth = ($num1w * 3 / 5) / length;
-            if(charwidth > ($num1hb / 30)){
-                charwidth = $num1hb / 30;
+        $(".title").each(function (index, value) {
+            let length = value.textContent.length;
+            let charwidth = (articlezone_upper.width * 3 / 5) / length;
+            if (charwidth > (articlezone_upper.height_beta / 30)) {
+                charwidth = articlezone_upper.height_beta / 30;
             }
             $("#title" + index).css("font-size", charwidth + "px");
         });
-        $("#articlezone-upper").css({
-            "height": $num1hb + "px",
-            "gap": $num1w / 60 + "px"
+        $("#articlezone_upper").css({
+            "height": articlezone_upper.height_beta + "px",
+            "gap": articlezone_upper.width / 60 + "px"
         });
-        $("#articlezone-lower").css({
-            "height": $num2hb + "px",
-            "gap": $num1w / 60 + "px"
+        $("#articlezone_lower").css({
+            "height": articlezone_lower.height_beta + "px",
+            "gap": articlezone_upper.width / 60 + "px"
         });
     }
-    $num3 = $("#example-subart").innerHeight();
     $(".article").find("p").css({
-        "font-size": $num3 / 15 + "px",
-        "margin-top": $num3 / 40 + "px",
-        "margin-left": $num3 / 20 + "px",
-        "margin-right": $num3 / 20 + "px",
-        "margin-bottom": $num3 / 40 + "px"
+        "font-size": example_default_article.height / 15 + "px",
+        "margin-top": example_default_article.height / 40 + "px",
+        "margin-left": example_default_article.height / 20 + "px",
+        "margin-right": example_default_article.height / 20 + "px",
+        "margin-bottom": example_default_article.height / 40 + "px"
     });
-
-    $num4 = $("#mainarticle");
-    $num4h = $("#mainarticle").innerHeight();
-    $num4.find("p").css("font-size", $num4h / 15 + "px");
-    $num4.find("p").css({
-        "margin-top": $num4h / 80 + "px",
-        "margin-left": $num4h / 20 + "px",
-        "margin-right": $num4h / 20 + "px",
-        "margin-bottom": $num4h / 80 + "px"
+    $("#article_main").find("p").css({
+        "margin-top": main_article.height / 80 + "px",
+        "margin-left": main_article.height / 20 + "px",
+        "margin-right": main_article.height / 20 + "px",
+        "margin-bottom": main_article.height / 80 + "px",
+        "font-size": main_article.height / 15 + "px"
     });
-    $(".category-title").css({
-        "line-height": $(".category-title").innerHeight() + "px",
+    $(".category_title").css({
+        "line-height": category_title.height + "px",
     });
-    $num5 = $(".category-title").innerHeight();
-    $num5 = $num5 * 0.75;
-    $(".category-detail li").css({
-        "height": $num5 + "px",
-        "line-height": $num5 + "px",
-        "font-size": $num5 * 0.4 + "px"
+    $(".category_detail li").css({
+        "height": category_detail_title.height + "px",
+        "line-height": category_detail_title.height + "px",
+        "font-size": category_detail_title.height * 0.4 + "px"
     });
 
 }

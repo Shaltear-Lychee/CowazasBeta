@@ -118,6 +118,10 @@ header {
         justify-content: space-between;
     }
 
+    #category{
+        min-height: 100%;
+    }
+
     #articlezone_upper {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -286,6 +290,7 @@ header {
 
     #mid_right {
         width: 20%;
+        min-height: 693.75px;
     }
 }
 
@@ -349,7 +354,7 @@ header {
 }
 
 .category_detail li a {
-    font-size: 20px;
+    font-size: 15px;
     margin-left: 20px;
 }
 

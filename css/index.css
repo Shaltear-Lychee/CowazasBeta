@@ -311,7 +311,7 @@ header {
 
     #mid_right {
         width: 175px;
-        transform: translateX(100%);
+        transform: translateX(175px);
         transition: 0.5s;
     }
 }

@@ -33,7 +33,14 @@ function resize() {
             width: $("#articlezone_lower").innerWidth(),
             height_alpha: $("#articlezone_lower").innerWidth() * 30 / 129,
             height_beta: $("#articlezone_lower").innerWidth()
-        };
+        },
+        example_default_article = {width: undefined, height: $("#example_default_article").innerHeight()},
+        main_article = {width: undefined, height: $("#article_main").innerHeight()},
+        category_title = {width: undefined, height: $(".category_title").innerHeight()},
+        category_detail_title = {width: undefined, height: category_title.height * 0.75};
+
+    const ref_disp_propaties = [body, header, header_elements, articlezone_upper, articlezone_lower, example_default_article, main_article, category_title, category_detail_title];
+
 
     if ($("#btn1").hasClass("btn__activated")) {
         $("#mid_right").removeClass("mid_right__activated");
@@ -55,6 +62,28 @@ function resize() {
         "height": header_elements.height + "px",
         "width": header_elements.height + "px",
         "font-size": header_elements.height / 2 + "px"
+    });
+    $(".article").find("p").css({
+        "font-size": example_default_article.height / 15 + "px",
+        "margin-top": example_default_article.height / 40 + "px",
+        "margin-left": example_default_article.height / 20 + "px",
+        "margin-right": example_default_article.height / 20 + "px",
+        "margin-bottom": example_default_article.height / 40 + "px"
+    });
+    $("#article_main").find("p").css({
+        "margin-top": main_article.height / 80 + "px",
+        "margin-left": main_article.height / 20 + "px",
+        "margin-right": main_article.height / 20 + "px",
+        "margin-bottom": main_article.height / 80 + "px",
+        "font-size": main_article.height / 15 + "px"
+    });
+    $(".category_title").css({
+        "line-height": category_title.height + "px",
+    });
+    $(".category_detail li").css({
+        "height": category_detail_title.height + "px",
+        "line-height": category_detail_title.height + "px",
+        "font-size": category_detail_title.height * 0.4 + "px"
     });
 
     //Responsive
@@ -122,37 +151,5 @@ function resize() {
             "gap": articlezone_upper.width / 60 + "px"
         });
     }
-
-    //Define reference display propaties whose size are determined from upper settings
-
-    const example_default_article = {width: undefined, height: $("#example_default_article").innerHeight()},
-        main_article = {width: undefined, height: $("#article_main").innerHeight()},
-        category_title = {width: undefined, height: $(".category_title").innerHeight()},
-        category_detail_title = {width: undefined, height: category_title.height * 0.75};
-
-    $(".article").find("p").css({
-        "font-size": example_default_article.height / 15 + "px",
-        "margin-top": example_default_article.height / 40 + "px",
-        "margin-left": example_default_article.height / 20 + "px",
-        "margin-right": example_default_article.height / 20 + "px",
-        "margin-bottom": example_default_article.height / 40 + "px"
-    });
-    $("#article_main").find("p").css({
-        "margin-top": main_article.height / 80 + "px",
-        "margin-left": main_article.height / 20 + "px",
-        "margin-right": main_article.height / 20 + "px",
-        "margin-bottom": main_article.height / 80 + "px",
-        "font-size": main_article.height / 15 + "px"
-    });
-    $(".category_title").css({
-        "line-height": category_title.height + "px",
-    });
-    $(".category_detail li").css({
-        "height": category_detail_title.height + "px",
-        "line-height": category_detail_title.height + "px",
-        "font-size": category_detail_title.height * 0.4 + "px"
-    });
-
-    const ref_disp_propaties = [body, header, header_elements, articlezone_upper, articlezone_lower, example_default_article, main_article, category_title, category_detail_title];
 }
 

@@ -15,6 +15,7 @@ $(document).ready(function () {
         $("#mid_center").toggleClass("mid_center__activated");
         $("#mid_right").toggleClass("mid_right__activated");
         $(this).toggleClass("btn__activated");
+        $("body").toggleClass("test");
     });
 });
 
@@ -24,6 +25,7 @@ function resize() {
     const body = {width: $("body").innerWidth(), height: $("body").innerHeight()},
         header = {width: undefined, height: $("header").innerHeight()},
         header_elements = {width: undefined, height: header.height / 1.5},
+        mid_center = {width: $("#mid_center").innerWidth(), height: $("#mid_center").innerHeight()},
         articlezone_upper = {
             width: $("#articlezone_upper").innerWidth(),
             height_alpha: $("#articlezone_upper").innerWidth() * 63 / 129,
@@ -40,13 +42,13 @@ function resize() {
         $("#mid_right").removeClass("mid_right__activated");
         $("#mid_center").removeClass("mid_center__activated");
         $("#btn1").removeClass("btn__activated");
+        $("body").removeClass("test");
     }
 
     //Append propaties to css
     $("#searchbox").css({
         "border-radius": header_elements.height / 2 + "px"
     });
-    $("#category").css("height", body.height - header.height);
     $("#searchbox input").css({
         "height": header_elements.height + "px",
         "line-height": header_elements.height + "px",
@@ -124,6 +126,13 @@ function resize() {
             "gap": articlezone_upper.width / 60 + "px"
         });
     }
+    if (body.width >= 950) {
+        $("#mid_right").css("min-height", mid_center.height + articlezone_upper.width / 40 + "px");
+    } else {
+        $("#mid_right").css("min-height", "0px");
+    }
+
+    console.log($("#mid_right").innerHeight());
     const example_default_article = {width: undefined, height: $("#example_default_article").innerHeight()},
         main_article = {width: undefined, height: $("#article_main").innerHeight()},
         category_title = {width: undefined, height: $(".category_title").innerHeight()},
@@ -151,6 +160,6 @@ function resize() {
         "line-height": category_detail_title.height + "px",
         "font-size": category_detail_title.height * 0.4 + "px"
     });
-    const ref_disp_propaties = [body, header, header_elements, articlezone_upper, articlezone_lower, example_default_article, main_article, category_title, category_detail_title];
+    const ref_disp_propaties = [body, header, header_elements, articlezone_upper, articlezone_lower, mid_center, example_default_article, main_article, category_title, category_detail_title];
 }
 
